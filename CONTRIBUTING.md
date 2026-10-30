@@ -3,7 +3,7 @@
 1. 使用当前 KSF 应用开发工具包创建独立应用。应用是唯一安装单元，可包含可选主窗口、多种卡片和后端。模型调用必须经过工作台统一 AI 服务，不能保存模型密钥或直接启动模型 CLI。
 2. 执行 SDK 的 `ksf-app check`、`ksf-app build`，并在独立工作台安装验证。提交功能、窗口与卡片、数据迁移、权限、平台限制和验收结果。
 3. Fork 本仓库，在分支中将包放进 `store/packages/`，推荐 `<应用ID>-<版本>-<平台或any>-<摘要>.ksfapp`。通过 SDK 生成准确的 manifest、size 和 SHA-256，不手工猜测。
-4. 更新 `store/index.json` 的 `apps[]`。同一应用可保留多个版本和平台变体，商店聚合成一个条目，只安装最新兼容版本。新应用使用自己持有的命名空间，不能使用 `conversations`、`markdown`、`git` 等官方保留 ID。
+4. 更新 `store/index.json` 的 `apps[]`。同一应用可保留多个版本和平台变体，商店聚合成一个条目，只安装最新兼容版本。新应用使用 `com.<发布者>.<应用名>` 三段式 ID。com.ksf 命名空间只由 KSF 官方维护；其他来源和手动导入不能冒用。清单及 SDK 版本均为 1，不接受旧版 schema 2。
 5. 可选商店资料使用 `listing`；图片放在 `store/media/<SHA256>.png|jpg|webp`。截图必须有替代文字，只使用虚构或获得公开授权的数据。
 6. 在本仓库执行 `npm ci && npm test && npm run check`，通过 Pull Request 提交。附应用源码与版本链接、作者、授权说明、声明能力和真实验收记录。
 7. 维护者审查后合并 main，GitHub Actions 部署；核对公开索引、包和图片可以直接读取，再在 KSF 商店刷新安装。
