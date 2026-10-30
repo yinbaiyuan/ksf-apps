@@ -14,7 +14,7 @@
 {
   "protocol": "ksf-app-registry-v1",
   "apps": [{
-    "manifest": {"schemaVersion": 2, "sdkVersion": 2, "id": "yourname.example", "version": "1.0.0", "name": "示例", "description": "应用说明", "permissions": [], "window": {"entry": "frontend/index.js"}},
+    "manifest": {"schemaVersion": 1, "sdkVersion": 1, "minCoreVersion": "0.3.3", "dataStores": [], "id": "com.yourname.example", "version": "1.0.0", "name": "示例", "description": "应用说明", "permissions": [], "window": {"entry": "frontend/index.js"}},
     "package": {"url": "packages/yourname.example-1.0.0-any-SHA256.ksfapp", "size": 1234, "sha256": "由构建工具生成的64位摘要"}
   }]
 }
