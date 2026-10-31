@@ -6,6 +6,47 @@
       "manifest": {
         "schemaVersion": 1,
         "sdkVersion": 1,
+        "id": "com.ksf.abilities",
+        "name": "KSF能力",
+        "version": "0.1.0",
+        "description": "KSF能力系统应用占位，当前提供空白窗口。",
+        "author": "KSF",
+        "icon": "abilities",
+        "minCoreVersion": "0.3.2",
+        "permissions": [],
+        "dataStores": [],
+        "cards": [],
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 980,
+            "height": 720
+          },
+          "minSize": {
+            "width": 480,
+            "height": 320
+          },
+          "styles": [
+            "frontend/assets/abilities-Z1AnrJlA.css"
+          ]
+        }
+      },
+      "package": {
+        "url": "packages/com.ksf.abilities-0.1.0.ksfapp",
+        "sha256": "56788ee32f57b0c870d5bbd6abf355c9b0aa9e921703d1d1c417a5a46fc971e6",
+        "size": 74564
+      },
+      "listing": {
+        "subtitle": "KSF能力入口，内容待补充。",
+        "description": "Core 内置系统应用占位。当前仅提供空白窗口。",
+        "releaseNotes": "新增系统应用占位入口。"
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "sdkVersion": 1,
         "id": "com.ksf.activity-monitor",
         "name": "活动监视器",
         "description": "查看 KSF 正在执行的任务、后台应用和资源占用，并管理它们的运行。",
@@ -39,6 +80,145 @@
         "url": "packages/com.ksf.activity-monitor-0.1.4.ksfapp",
         "sha256": "dc4dbe728d6c9ef191721320d7e72c044c92e69304cc6d150ed04b47389e00bf",
         "size": 264451
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "com.ksf.conversations",
+        "name": "KSF飞轮",
+        "version": "0.2.21",
+        "description": "汇聚工作记录、回顾结果与改进建议，推动项目、知识和能力持续积累。",
+        "author": "KSF",
+        "icon": "flywheel",
+        "sdkVersion": 1,
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1180,
+            "height": 740
+          },
+          "minSize": {
+            "width": 480,
+            "height": 420
+          },
+          "styles": [
+            "frontend/assets/conversations-Cm_BQmlp.css"
+          ]
+        },
+        "cards": [
+          {
+            "id": "work-stats",
+            "name": "工作统计",
+            "description": "今日／本周横向统计，列出今日项目、知识和能力，点击核对明细",
+            "icon": "work-stats",
+            "entry": "frontend/cards/work-stats.js",
+            "defaultSize": {
+              "w": 4,
+              "h": 2
+            },
+            "minSize": {
+              "w": 1,
+              "h": 1
+            },
+            "styles": [
+              "frontend/assets/conversations-Cm_BQmlp.css"
+            ]
+          }
+        ],
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "resident"
+        },
+        "permissions": [
+          "filesystem",
+          "background",
+          "ai",
+          "codex-conversations"
+        ],
+        "minCoreVersion": "0.3.2",
+        "dataStores": [],
+        "cli": {
+          "contractVersion": 1,
+          "entry": "cli/index.mjs",
+          "documentation": "docs/cli.md",
+          "commands": [
+            {
+              "id": "overview",
+              "description": "回顾概览与运行状态"
+            },
+            {
+              "id": "profiles",
+              "description": "可用执行配置"
+            },
+            {
+              "id": "configure",
+              "description": "设置自动回顾"
+            },
+            {
+              "id": "generate",
+              "description": "生成指定日期报告"
+            },
+            {
+              "id": "report",
+              "description": "读取报告"
+            },
+            {
+              "id": "confirm",
+              "description": "用户审阅并归档"
+            },
+            {
+              "id": "resume",
+              "description": "恢复原运行"
+            },
+            {
+              "id": "suggestions",
+              "description": "查询建议"
+            },
+            {
+              "id": "suggestion",
+              "description": "更新建议状态"
+            },
+            {
+              "id": "chats",
+              "description": "按归档状态查询聊天"
+            },
+            {
+              "id": "restore",
+              "description": "恢复对话"
+            },
+            {
+              "id": "retry",
+              "description": "显式重试已确认失败的任务"
+            }
+          ]
+        }
+      },
+      "package": {
+        "url": "packages/com.ksf.conversations-0.2.21.ksfapp",
+        "sha256": "5f8faf593ccf209f9d4e0ce6733604b6d9c9fc348df82566f31d36eeb9787742",
+        "size": 439302
+      },
+      "listing": {
+        "subtitle": "每天核对工作，留下可处理的建议。",
+        "description": "按工作事项回顾当天的进展、成果和证据，提出能力复用及现有资产的改进建议。用户审阅后，归档已结束且证据完整的对话。\n\n保留原始请求、路由、结果和历史搜索；建议跨日期集中跟踪。支持每日自动生成、手动补做、后台恢复与工作统计卡片。",
+        "releaseNotes": "回顾支持显式选择 Codex Desktop 与所属项目。按原操作编号恢复，校验完整 JSON 与证据引用后保存报告；API/CLI 路径保持可选，未知结果不重发。",
+        "screenshots": [
+          {
+            "url": "media/75c23637875d8307d21a102dc2cd2d2038f9a13be1725b67fdcc7e0312c47bde.jpg",
+            "sha256": "75c23637875d8307d21a102dc2cd2d2038f9a13be1725b67fdcc7e0312c47bde",
+            "size": 58587,
+            "alt": "查看归属聊天、完整轮次与原始结果"
+          },
+          {
+            "url": "media/6dc324acfaf7de130031105d6288036b712c7acca04a382eca182e39369b4175.jpg",
+            "sha256": "6dc324acfaf7de130031105d6288036b712c7acca04a382eca182e39369b4175",
+            "size": 85378,
+            "alt": "工作统计卡片；虚构桌面同时展示两种示例卡片"
+          }
+        ]
       }
     },
     {
@@ -176,6 +356,176 @@
             "sha256": "6dc324acfaf7de130031105d6288036b712c7acca04a382eca182e39369b4175",
             "size": 85378,
             "alt": "工作统计卡片；虚构桌面同时展示两种示例卡片"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "sdkVersion": 1,
+        "id": "com.ksf.cooperation-center",
+        "name": "KSF合作",
+        "description": "声明可承接事项，以 KSF 实例为单位发起、处理和交付合作任务，管理历史与消息。",
+        "version": "0.4.1",
+        "author": "KSF",
+        "icon": "handshake",
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": false,
+          "defaultSize": {
+            "width": 1180,
+            "height": 780
+          },
+          "minSize": {
+            "width": 520,
+            "height": 440
+          },
+          "styles": [
+            "frontend/assets/cooperation-center-BOy34fri.css"
+          ]
+        },
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "resident"
+        },
+        "permissions": [
+          "messages.send",
+          "messages.receive",
+          "ai",
+          "background",
+          "data.export",
+          "workflows.invoke",
+          "codex-conversations",
+          "projects.read"
+        ],
+        "activation": {
+          "messages": {
+            "channels": [
+              "lan.message.v1"
+            ]
+          }
+        },
+        "cli": {
+          "contractVersion": 1,
+          "entry": "cli/index.mjs",
+          "documentation": "docs/cli.md",
+          "commands": [
+            {
+              "id": "peers"
+            },
+            {
+              "id": "conversations"
+            },
+            {
+              "id": "message.send"
+            },
+            {
+              "id": "message.status"
+            },
+            {
+              "id": "message.reconcile"
+            },
+            {
+              "id": "task.create"
+            },
+            {
+              "id": "task.list"
+            },
+            {
+              "id": "task.get"
+            },
+            {
+              "id": "task.action"
+            },
+            {
+              "id": "task.comment"
+            },
+            {
+              "id": "task.material"
+            },
+            {
+              "id": "task.deliver"
+            },
+            {
+              "id": "task.rework"
+            },
+            {
+              "id": "policy.list"
+            },
+            {
+              "id": "policy.match"
+            },
+            {
+              "id": "sync.status"
+            },
+            {
+              "id": "sync.retry"
+            },
+            {
+              "id": "task.export"
+            },
+            {
+              "id": "material.import"
+            },
+            {
+              "id": "material.text"
+            },
+            {
+              "id": "material.read"
+            },
+            {
+              "id": "offer.list"
+            },
+            {
+              "id": "offer.preview"
+            },
+            {
+              "id": "peer.offers"
+            },
+            {
+              "id": "peer.offers.refresh"
+            },
+            {
+              "id": "execution.catalog"
+            },
+            {
+              "id": "task.result"
+            },
+            {
+              "id": "workflow.catalog"
+            }
+          ]
+        },
+        "minCoreVersion": "0.3.5",
+        "dataStores": [
+          {
+            "name": "messages.json",
+            "scope": "user",
+            "schemaVersion": 3,
+            "migrateFrom": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      "package": {
+        "url": "packages/com.ksf.cooperation-center-0.4.1.ksfapp",
+        "sha256": "ea65182d3b8bff8a759817f57aaaf5b9cfc6e11b14593adf2784d063a034a8a7",
+        "size": 344190
+      },
+      "listing": {
+        "subtitle": "在 KSF 实例之间发起、承接和交付任务",
+        "description": "先发布可承接事项，再为每项声明配置本机处理逻辑。合作实例发任务时选择声明，跟踪目标、材料、进展、讨论和成果。默认手动处理始终保留，支持人和 Agent、离线排队、历史检索、关联请求和子任务；B 提交成果即完成。",
+        "releaseNotes": "合作规则升级为承接声明：公开可承接事项、材料要求、交付内容及大致处理方式；按声明选择处理逻辑。旧规则保留为未发布草稿，不扩大授权。默认手动处理无需配置 Agent。",
+        "screenshots": [
+          {
+            "url": "media/93e3e463ec31ccaf59ed31b2ac1d6ac4434fdb5a0fcd1facf44f781184e446c7.jpg",
+            "sha256": "93e3e463ec31ccaf59ed31b2ac1d6ac4434fdb5a0fcd1facf44f781184e446c7",
+            "size": 94556,
+            "alt": "我的承接声明：公开承接内容、处理方式及交付方式，默认手动入口常驻。"
           }
         ]
       }
@@ -512,6 +862,82 @@
         "schemaVersion": 1,
         "sdkVersion": 1,
         "id": "com.ksf.documentation",
+        "name": "KSF手册",
+        "version": "0.1.5",
+        "description": "离线阅读完整KSF手册，按路线浏览、搜索正文和跳转章节。",
+        "author": "KSF",
+        "icon": "manual",
+        "minCoreVersion": "0.3.2",
+        "dataStores": [],
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1160,
+            "height": 780
+          },
+          "minSize": {
+            "width": 540,
+            "height": 420
+          },
+          "styles": [
+            "frontend/assets/documentation-lbmWxVgr.css"
+          ]
+        },
+        "cards": [],
+        "permissions": [
+          "filesystem"
+        ]
+      },
+      "package": {
+        "url": "packages/com.ksf.documentation-0.1.5.ksfapp",
+        "sha256": "9e1e25123e2d290d3d708a43879ec249a40f8e5df8ad07b591e94d8a5f0dc16b",
+        "size": 4099154
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "sdkVersion": 1,
+        "id": "com.ksf.documentation",
+        "name": "使用手册",
+        "version": "0.1.4",
+        "description": "离线阅读完整KSF手册，按路线浏览、搜索正文和跳转章节。",
+        "author": "KSF",
+        "icon": "manual",
+        "minCoreVersion": "0.3.2",
+        "dataStores": [],
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1160,
+            "height": 780
+          },
+          "minSize": {
+            "width": 540,
+            "height": 420
+          },
+          "styles": [
+            "frontend/assets/documentation-lbmWxVgr.css"
+          ]
+        },
+        "cards": [],
+        "permissions": [
+          "filesystem"
+        ]
+      },
+      "package": {
+        "url": "packages/com.ksf.documentation-0.1.4.ksfapp",
+        "sha256": "9e72913e3bfd6c198b4ea0d5f6741fde5638f47b6679a4741372299cbdbaeef9",
+        "size": 4098392
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "sdkVersion": 1,
+        "id": "com.ksf.documentation",
         "name": "系统文档",
         "version": "0.1.3",
         "description": "离线阅读完整KSF手册，按路线浏览、搜索正文和跳转章节。",
@@ -543,6 +969,65 @@
         "url": "packages/com.ksf.documentation-0.1.3.ksfapp",
         "sha256": "e6b2bc6ea7d524c0e01004b188aa6b4d437da6162af235bd093a3898b3ba7767",
         "size": 4098075
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "com.ksf.git",
+        "name": "KSF仓库",
+        "version": "0.1.15",
+        "description": "查看和管理本地 Git 仓库、变更、历史、分支与同步。",
+        "author": "KSF",
+        "icon": "git",
+        "sdkVersion": 1,
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1240,
+            "height": 780
+          },
+          "minSize": {
+            "width": 600,
+            "height": 440
+          },
+          "styles": [
+            "frontend/assets/git-RwPkR3OB.css"
+          ]
+        },
+        "cards": [],
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "on-demand"
+        },
+        "permissions": [
+          "filesystem",
+          "shell",
+          "network",
+          "environment"
+        ],
+        "minCoreVersion": "0.3.2",
+        "dataStores": []
+      },
+      "package": {
+        "url": "packages/com.ksf.git-0.1.15.ksfapp",
+        "sha256": "76ccf84ce41340b64feb8044cd25c0ca903f48f3d17e5867750310f3215e6ba2",
+        "size": 1189194
+      },
+      "listing": {
+        "subtitle": "看清变更，组织每次提交。",
+        "description": "管理当前工作区和关联的本地 Git 仓库。浏览提交图、分支和文件差异，按文件或差异块暂存。\n\n支持提交、远程同步、储藏及合并冲突处理。写操作前协调文档保存，保持原生 Git 的状态和错误语义。",
+        "releaseNotes": "修复应用弹层边界：侧栏、表单与详情在所属窗口内打开，其他窗口可继续操作；保留原有业务功能与数据。",
+        "screenshots": [
+          {
+            "url": "media/9397f1267d42ab82d056468bc038914694afe45a8ac3e97fb917d1d53594a956.jpg",
+            "sha256": "9397f1267d42ab82d056468bc038914694afe45a8ac3e97fb917d1d53594a956",
+            "size": 69907,
+            "alt": "提交历史、分支与项目文档的逐行差异"
+          }
+        ]
       }
     },
     {
@@ -607,6 +1092,103 @@
     {
       "manifest": {
         "schemaVersion": 1,
+        "sdkVersion": 1,
+        "id": "com.ksf.knowledge",
+        "name": "KSF知识",
+        "version": "0.1.0",
+        "description": "KSF知识系统应用占位，当前提供空白窗口。",
+        "author": "KSF",
+        "icon": "knowledge",
+        "minCoreVersion": "0.3.2",
+        "permissions": [],
+        "dataStores": [],
+        "cards": [],
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 980,
+            "height": 720
+          },
+          "minSize": {
+            "width": 480,
+            "height": 320
+          },
+          "styles": [
+            "frontend/assets/knowledge-eZR09fYt.css"
+          ]
+        }
+      },
+      "package": {
+        "url": "packages/com.ksf.knowledge-0.1.0.ksfapp",
+        "sha256": "f659c219af9804ddbed2a9d70c45120c4a83e4ee66fe06fd4683361cfbd2fd69",
+        "size": 74575
+      },
+      "listing": {
+        "subtitle": "KSF知识入口，内容待补充。",
+        "description": "Core 内置系统应用占位。当前仅提供空白窗口。",
+        "releaseNotes": "新增系统应用占位入口。"
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "com.ksf.markdown",
+        "name": "KSF文档",
+        "version": "0.1.12",
+        "description": "浏览、编辑和预览 KSF 文件，保留自动保存、恢复草稿和版本冲突处理。",
+        "author": "KSF",
+        "icon": "documents",
+        "sdkVersion": 1,
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1180,
+            "height": 760
+          },
+          "minSize": {
+            "width": 540,
+            "height": 420
+          },
+          "styles": [
+            "frontend/assets/documents-C0MFQkEd.css"
+          ]
+        },
+        "cards": [],
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "on-demand"
+        },
+        "permissions": [
+          "filesystem"
+        ],
+        "minCoreVersion": "0.3.2",
+        "dataStores": []
+      },
+      "package": {
+        "url": "packages/com.ksf.markdown-0.1.12.ksfapp",
+        "sha256": "c7982dacd45e718289886a88a9d39defebaa67ab3edd80402bc1368e7ff8dd94",
+        "size": 4998941
+      },
+      "listing": {
+        "subtitle": "原位阅读、编辑与保存。",
+        "description": "在工作台中浏览和编辑 Markdown 原件，切换即时预览、源码、分栏或阅读模式。\n\n支持文件树、搜索、多窗口、自动保存、草稿恢复、版本冲突核对，以及移动文件和插入图片。",
+        "releaseNotes": "修复应用弹层边界：侧栏、表单与详情在所属窗口内打开，其他窗口可继续操作；保留原有业务功能与数据。",
+        "screenshots": [
+          {
+            "url": "media/64066e8cfa4e5ca58a9828bf330647ca6f3e67c1371154f4beaf1036b0a09538.jpg",
+            "sha256": "64066e8cfa4e5ca58a9828bf330647ca6f3e67c1371154f4beaf1036b0a09538",
+            "size": 59472,
+            "alt": "即时预览编辑器、文件树与项目文档"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
         "id": "com.ksf.markdown",
         "name": "文档",
         "version": "0.1.11",
@@ -656,6 +1238,76 @@
             "sha256": "64066e8cfa4e5ca58a9828bf330647ca6f3e67c1371154f4beaf1036b0a09538",
             "size": 59472,
             "alt": "即时预览编辑器、文件树与项目文档"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "id": "com.ksf.projects",
+        "name": "KSF项目",
+        "version": "0.2.10",
+        "description": "从现有项目记录接上工作。集中查看项目目标、任务检查点、相关聊天、资料与成果，保留原文和来源。",
+        "author": "KSF",
+        "icon": "package",
+        "sdkVersion": 1,
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "on-demand"
+        },
+        "permissions": [
+          "filesystem",
+          "shell",
+          "codex-conversations"
+        ],
+        "window": {
+          "entry": "frontend/index.js",
+          "styles": [
+            "frontend/assets/projects-DjTQwAKm.css"
+          ],
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1180,
+            "height": 760
+          },
+          "minSize": {
+            "width": 540,
+            "height": 420
+          }
+        },
+        "minCoreVersion": "0.3.2",
+        "dataStores": [
+          {
+            "name": "conversations.json",
+            "scope": "user",
+            "schemaVersion": 1,
+            "migrateFrom": []
+          },
+          {
+            "name": "preferences.json",
+            "scope": "user",
+            "schemaVersion": 1,
+            "migrateFrom": []
+          }
+        ]
+      },
+      "package": {
+        "url": "packages/com.ksf.projects-0.2.10.ksfapp",
+        "sha256": "46b08f58ee94657f0029eef25bb26b572cb864f443721cf02a49a9a7991d09d9",
+        "size": 235266
+      },
+      "listing": {
+        "subtitle": "从项目目标，接续到下一步。",
+        "description": "集中查看项目概览、任务检查点、相关聊天和资料出处。\n\n保留原始文档与来源，不根据对话猜测任务状态。可以从项目跳转文档和关联聊天，继续当前工作。",
+        "releaseNotes": "保留项目概览、任务筛选、相关聊天及资料出处的阅读方式。",
+        "screenshots": [
+          {
+            "url": "media/94860784cdc5c5d51974ed8456d1ef8f9851d084cb5eb4d91dcff574d581ab1b.jpg",
+            "sha256": "94860784cdc5c5d51974ed8456d1ef8f9851d084cb5eb4d91dcff574d581ab1b",
+            "size": 56899,
+            "alt": "虚构项目的目标、任务入口和关联资料"
           }
         ]
       }
@@ -759,44 +1411,6 @@
         "url": "packages/terminal-0.1.7.ksfapp",
         "sha256": "355e9529d4a5d9e5b96756f21aacfb42e5a57e2846a72cf6f105ca2fe9f6ffc5",
         "size": 120529
-      }
-    },
-    {
-      "manifest": {
-        "schemaVersion": 1,
-        "sdkVersion": 1,
-        "id": "com.ksf.documentation",
-        "name": "使用手册",
-        "version": "0.1.4",
-        "description": "离线阅读完整KSF手册，按路线浏览、搜索正文和跳转章节。",
-        "author": "KSF",
-        "icon": "manual",
-        "minCoreVersion": "0.3.2",
-        "dataStores": [],
-        "window": {
-          "entry": "frontend/index.js",
-          "multiInstance": true,
-          "defaultSize": {
-            "width": 1160,
-            "height": 780
-          },
-          "minSize": {
-            "width": 540,
-            "height": 420
-          },
-          "styles": [
-            "frontend/assets/documentation-lbmWxVgr.css"
-          ]
-        },
-        "cards": [],
-        "permissions": [
-          "filesystem"
-        ]
-      },
-      "package": {
-        "url": "packages/com.ksf.documentation-0.1.4.ksfapp",
-        "sha256": "9e72913e3bfd6c198b4ea0d5f6741fde5638f47b6679a4741372299cbdbaeef9",
-        "size": 4098392
       }
     }
   ]
