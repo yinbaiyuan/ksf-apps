@@ -4,8 +4,8 @@ import { assert } from './common.js';
 
 export const SDK_VERSION = 1;
 export const SUPPORTED_SDK_VERSIONS = [1];
-export const DEFAULT_APPLICATIONS = ['com.ksf.conversations', 'com.ksf.markdown', 'com.ksf.git', 'com.ksf.documentation','com.ksf.activity-monitor','com.ksf.cooperation-center'];
-export const OFFICIAL_APPLICATIONS = [...DEFAULT_APPLICATIONS,'com.ksf.terminal','com.ksf.projects'];
+export const DEFAULT_APPLICATIONS = ['com.ksf.conversations', 'com.ksf.markdown', 'com.ksf.git', 'com.ksf.projects', 'com.ksf.knowledge', 'com.ksf.abilities', 'com.ksf.documentation','com.ksf.activity-monitor','com.ksf.cooperation-center'];
+export const OFFICIAL_APPLICATIONS = [...DEFAULT_APPLICATIONS,'com.ksf.terminal'];
 export const isOfficialApplicationId = id => typeof id==='string'&&id.startsWith('com.ksf.');
 export const windowEntry = manifest => manifest.window;
 export const entryPoints = manifest => [windowEntry(manifest), ...(manifest.cards ?? [])].filter(Boolean);
