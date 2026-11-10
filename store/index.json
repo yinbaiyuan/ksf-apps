@@ -1489,6 +1489,83 @@
           }
         ]
       }
+    },
+    {
+      "manifest": {
+        "schemaVersion": 1,
+        "sdkVersion": 1,
+        "id": "com.yinbaiyuan.yitang-canvas",
+        "name": "一堂画布",
+        "description": "在完整五步法与双三角画布中逐条填写、自动保存和持续修改。",
+        "version": "0.2.8",
+        "permissions": [
+          "filesystem"
+        ],
+        "cards": [],
+        "backend": {
+          "runtime": "node",
+          "entry": "backend/index.mjs",
+          "lifecycle": "on-demand"
+        },
+        "window": {
+          "entry": "frontend/index.js",
+          "multiInstance": true,
+          "defaultSize": {
+            "width": 1480,
+            "height": 860
+          },
+          "minSize": {
+            "width": 480,
+            "height": 420
+          },
+          "styles": [
+            "frontend/assets/yitang-canvas-CtrCP3T7.css"
+          ]
+        },
+        "minCoreVersion": "0.5.3",
+        "dataStores": [
+          {
+            "name": "canvases.json",
+            "scope": "user",
+            "schemaVersion": 1,
+            "migrateFrom": []
+          }
+        ],
+        "author": "尹白猿",
+        "icon": "documents",
+        "sdkApiVersion": "1.1.0",
+        "builtWithSdkVersion": "1.1.0"
+      },
+      "package": {
+        "url": "packages/com.yinbaiyuan.yitang-canvas-0.2.8-any-befa317d68f064b474dcb61acd84f6a69d6b39e1fbd25974e3be9bb4e1a3fccd.ksfapp",
+        "sha256": "befa317d68f064b474dcb61acd84f6a69d6b39e1fbd25974e3be9bb4e1a3fccd",
+        "size": 286722
+      },
+      "listing": {
+        "subtitle": "五步法与双三角，逐条填写、持续完善。",
+        "description": "在完整画布中逐条梳理业务与 AI 场景。提供五步法·基础取舍版和一堂双三角两套空白模板，支持多份管理、搜索、复制、归档恢复、可选项目关联与 Markdown/JSON 导出。Shift+Enter 新增下一条，拖动手柄调整排序，停止输入后自动保存。双三角以金黄和天蓝区分人类与 AI；每格可打开填写提示。数据保存在安装者当前 KSF 实例中，不接入 AI 或后台定时任务。",
+        "releaseNotes": "移除重复的黄色品牌顶栏，将画布名称、项目选择、保存状态和操作合并为单行。画布随窗口高度填满剩余空间，收紧四周留白，去掉底部状态条上方的空隙。保留现有条目、模板、分色、排序和自动保存。",
+        "icon": {
+          "url": "media/cebfbc480c4ffa370dd238cccd340794e7ccdb9505921565a8cfd3c0cf017e0a.png",
+          "sha256": "cebfbc480c4ffa370dd238cccd340794e7ccdb9505921565a8cfd3c0cf017e0a",
+          "size": 169249,
+          "alt": "一堂画布：明黄底色的折角六格画布图标"
+        },
+        "screenshots": [
+          {
+            "url": "media/a8517c2eb312fc79c1858883ab74c31ae5978f7f3fc7049da3ba31ccae2fe5c8.png",
+            "sha256": "a8517c2eb312fc79c1858883ab74c31ae5978f7f3fc7049da3ba31ccae2fe5c8",
+            "size": 102705,
+            "alt": "虚构社区面包店示例：五步法六列九区域的紧凑逐条填写画布"
+          },
+          {
+            "url": "media/f9575b1b1ff8e91767b9f46305fddbb6f1320afdf7e1cc7058e5d2e77f6a6a1b.png",
+            "sha256": "f9575b1b1ff8e91767b9f46305fddbb6f1320afdf7e1cc7058e5d2e77f6a6a1b",
+            "size": 84507,
+            "alt": "虚构会议纪要示例：双三角六格，金黄人类三角与天蓝 AI 三角分组"
+          }
+        ]
+      }
     }
   ]
 }
