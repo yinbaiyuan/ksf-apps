@@ -1497,7 +1497,7 @@
         "id": "com.yinbaiyuan.yitang-canvas",
         "name": "一堂画布",
         "description": "在完整五步法与双三角画布中逐条填写、自动保存和持续修改。",
-        "version": "0.2.7",
+        "version": "0.2.8",
         "permissions": [
           "filesystem"
         ],
@@ -1519,7 +1519,7 @@
             "height": 420
           },
           "styles": [
-            "frontend/assets/yitang-canvas-C1z5_CKx.css"
+            "frontend/assets/yitang-canvas-CtrCP3T7.css"
           ]
         },
         "minCoreVersion": "0.5.3",
@@ -1537,9 +1537,9 @@
         "builtWithSdkVersion": "1.1.0"
       },
       "package": {
-        "url": "packages/com.yinbaiyuan.yitang-canvas-0.2.7-any-b14bf86b7a9f7c30a7e3b12820e577ba20d29a9167c19aa43b7fe67c5a4ec5f2.ksfapp",
-        "sha256": "b14bf86b7a9f7c30a7e3b12820e577ba20d29a9167c19aa43b7fe67c5a4ec5f2",
-        "size": 286768
+        "url": "packages/com.yinbaiyuan.yitang-canvas-0.2.8-any-befa317d68f064b474dcb61acd84f6a69d6b39e1fbd25974e3be9bb4e1a3fccd.ksfapp",
+        "sha256": "befa317d68f064b474dcb61acd84f6a69d6b39e1fbd25974e3be9bb4e1a3fccd",
+        "size": 286722
       },
       "listing": {
         "subtitle": "五步法与双三角，逐条填写、持续完善。",
@@ -1553,15 +1553,15 @@
         },
         "screenshots": [
           {
-            "url": "media/e25e4df1252706b8980a2f2eb9d8f36e62bdbd963b8c2cd0e4b5a0ab1ae7f200.png",
-            "sha256": "e25e4df1252706b8980a2f2eb9d8f36e62bdbd963b8c2cd0e4b5a0ab1ae7f200",
-            "size": 101411,
+            "url": "media/a8517c2eb312fc79c1858883ab74c31ae5978f7f3fc7049da3ba31ccae2fe5c8.png",
+            "sha256": "a8517c2eb312fc79c1858883ab74c31ae5978f7f3fc7049da3ba31ccae2fe5c8",
+            "size": 102705,
             "alt": "虚构社区面包店示例：五步法六列九区域的紧凑逐条填写画布"
           },
           {
-            "url": "media/bb923c0393610978a8f27da8b7cabb4cfd5d0957bc60fb4d465066f6d87289f0.png",
-            "sha256": "bb923c0393610978a8f27da8b7cabb4cfd5d0957bc60fb4d465066f6d87289f0",
-            "size": 83541,
+            "url": "media/f9575b1b1ff8e91767b9f46305fddbb6f1320afdf7e1cc7058e5d2e77f6a6a1b.png",
+            "sha256": "f9575b1b1ff8e91767b9f46305fddbb6f1320afdf7e1cc7058e5d2e77f6a6a1b",
+            "size": 84507,
             "alt": "虚构会议纪要示例：双三角六格，金黄人类三角与天蓝 AI 三角分组"
           }
         ]
