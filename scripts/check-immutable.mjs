@@ -5,4 +5,3 @@ execFileSync('git',['cat-file','-e',base+'^{commit}']);
 const rows=execFileSync('git',['diff','--name-status','--no-renames','-z',base,'HEAD','--','releases','store/packages'],{encoding:'utf8'}).split('\0').filter(Boolean);
 for(let i=0;i<rows.length;i+=2)if(rows[i]!=='A')throw Error('Published release data is immutable: '+rows[i+1]+'; add a new version instead.');
 console.log('Previously published release data preserved.');
-
