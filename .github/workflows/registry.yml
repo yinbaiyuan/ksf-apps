@@ -16,18 +16,21 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
       - run: npm ci --ignore-scripts
+      - run: npm run build
       - run: npm test
       - run: npm run check
+      - run: npm run check:immutable -- "${{ github.event.pull_request.base.sha || github.event.before }}"
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
-          path: store
+          path: dist
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: check

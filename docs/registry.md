@@ -1,25 +1,9 @@
-# 应用源分发规范
+# 发布结构
 
-索引以 UTF-8 JSON 发布，大小不超过 2 MiB，最多 500 个版本与平台条目。顶层 `protocol` 固定为 `ksf-app-registry-v1`，`apps` 是数组，`name` 可选。
+`index.json` 限制 8 KiB，包含源身份、目录修订号、数量、目录树及搜索树引用。叶片最多40条摘要，按完整对象ID前缀继续拆分；详情与历史版本按对象、按页读取。资源引用包含URL、大小与SHA-256。
 
-每条包含完整 `manifest` 和 `package: {url, size, sha256}`，可选 `listing`。manifest 采用当前 SDK 的 v1/v2 格式；包内声明必须与索引完全一致。`size` 为文件字节数，`sha256` 是小写十六进制摘要。相同 ID、版本、target、nodeAbi 不能重复。
+搜索按NFKC规范化并转小写，单字符和字符二元组建立倒排索引。客户端求候选交集后复核摘要并分页，不下载全部声明。
 
-本公共源采用比宿主更窄的发布范围：包必须是 `packages/` 下的相对 `.ksfapp` 路径，图片必须是 `media/<摘要>.png|jpg|webp`，不允许外链、查询参数、编码路径、符号链接或路径越界。包不超过 32 MiB，展开不超过 96 MiB；每图不超过 8 MiB，最多 8 张截图。
+应用发布以一个统一的 `ksf-app-package-v2` 包为准。源码内 `store/listing.json` 定义subtitle、description、releaseNotes、icon和screenshots；图片path相对store/目录，截图必须带alt。生成包固定包含store/listing.json和必要图片。图片不在包外单独发布。
 
-`listing` 可含 `subtitle`（120 字符）、`description`（12000）、`releaseNotes`（8000）、`icon` 和 `screenshots[]`。每张图片为 `{url, sha256, size, alt?}`，截图的 `alt` 必须非空且最多 200 字符。图片名摘要与内容摘要一致，仅支持 PNG、JPEG、WebP。
-
-示意结构（占位值不能直接提交）：
-
-```json
-{
-  "protocol": "ksf-app-registry-v1",
-  "apps": [{
-    "manifest": {"schemaVersion": 1, "sdkVersion": 1, "minCoreVersion": "0.3.3", "dataStores": [], "id": "com.yourname.example", "version": "1.0.0", "name": "示例", "description": "应用说明", "permissions": [], "window": {"entry": "frontend/index.js"}},
-    "package": {"url": "packages/yourname.example-1.0.0-any-SHA256.ksfapp", "size": 1234, "sha256": "由构建工具生成的64位摘要"}
-  }]
-}
-```
-
-检查器校验分发路径、包及文件摘要、声明一致性和入口存在，不执行应用、安装依赖或代替 SDK 完整构建检查。通过检查不意味着应用有发布资格，人工审查仍必须完成。
-
-发布目录与包更新分开：相同版本内容不得重写，listing 可以独立更新。索引变更经 CI 全量检查后随目录一起部署，避免先发布索引再上传资源。应用本地原安装源失效时不自动换源；更新保持旧窗口与任务租约的原有机制。
+每个版本创建独立的 `releases/<id>/<version>.json`，引用store/packages/中的不可变包。CI解析包生成公开目录，不人工修改大型index。介绍材料变化也须递增版本并重打包。同版本摘要变化由CI和Core安装保护拒绝。

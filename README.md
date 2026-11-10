@@ -1,38 +1,11 @@
-# ksf-apps
+# KSF 公用应用源
 
-KSF 工作台的公用应用源。仓库维护可下载的 `.ksfapp`、商店展示资料和 `ksf-app-registry-v1` 索引，通过 GitHub Pages 发布。
+商店入口：[index.json](https://yinbaiyuan.github.io/ksf-apps/index.json)。需要使用最新 KSF Core；目录采用 `ksf-store-catalog-v2`，不提供旧目录兼容入口。
 
-应用源地址：**https://yinbaiyuan.github.io/ksf-apps/index.json**
+每个应用版本只有一个 `.ksfapp` 权威安装包，程序、商店文案、图标和截图共同参与完整性校验。应用源码固定在 `store/listing.json` 定义商店内容，并将图片放在同一 `store/` 目录中。发布不再维护独立的图片仓库或全量声明索引。
 
-工作台将此源固定启用，不能编辑、停用或移除；用户仍可添加自建源。安装和更新需要确认来源与能力声明。已有应用继续跟随原安装源更新，不会因新增默认源而切换来源。
+发布输入在 `releases/<完整应用ID>/<版本>.json`，只引用完整包。CI 从包内声明生成分片目录、详情、分页历史和字符索引。`npm run build && npm test && npm run check` 可在本地复验，生成结果位于 `dist/`。
 
-Core 自带应用和合作中心统一使用此来源升级。Core 随包资源只作为内部离线基线，不拥有独立来源身份。本仓库只发布经核验的应用包和展示资料，不包含私人业务数据。当前工作目录的目录和包准备不等同于 Pages 已发布；上线以 CI 发布和回读结果为准。
+历史安装包原文件保留于 `store/packages/`，没有重写既有版本。当前目录仅发布统一包版本；旧索引仅在Git历史中留存，不再作为商店入口。
 
-## 开发与检查
-
-需要 Node.js 24 或更新版本，无第三方运行依赖：
-
-```sh
-npm ci
-npm test
-npm run check
-```
-
-- `store/`：唯一发布目录，包含索引、应用包和商店图片。
-- `scripts/check.mjs`：不执行应用代码的分发完整性检查。
-- `tests/`：虚构数据回归，不在公共目录发布测试应用。
-- `.github/workflows/registry.yml`：PR 校验；main 通过后部署 Pages。
-
-完整贡献流程见 [CONTRIBUTING.md](CONTRIBUTING.md)，字段、大小和更新规则见 [应用源规范](docs/registry.md)。应用开发使用当前 KSF 开发工具包，入口为工作区中的 `.agents/core/docs/app-development/README.md`。本仓库不是 SDK 的替代品。
-
-## 发布
-
-向 main 合并经过审查的变更后，工作流先执行测试与目录检查，再上传 `store/` 并部署。PR 不部署、不持有发布权限。初次需在仓库设置中启用 Pages 的 GitHub Actions 发布。
-
-只修改商店资料不改变应用包；已发布的相同版本和平台包不得替换内容。Pages 上的包与图片使用直接地址，不能依赖下载跳转。
-
-## 许可
-
-公开可读不等于授予开源许可。当前仓库尚未指定开源许可证；应用贡献者须明确其代码、图片、字体及分发授权，仓库不重新授权第三方作品。
-
-校验器采用随 KSF SDK v1 同步的纯协议代码（scripts/sdk），校验清单、后台应用、CLI、UTF-8 文档、数据迁移声明和包结构，不执行应用代码。Core 侧的 prepare-public-source.mjs 准备不可变包和索引，并同步校验代码；同版本和平台的摘要不一致会停止准备。
+应用及素材保留各自上游许可；公开可见不代表统一授予开源许可。第三方材料以包内声明和许可为准。
