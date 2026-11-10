@@ -1,0 +1,7 @@
+import {readFileSync,readdirSync,mkdirSync,writeFileSync,rmSync,cpSync} from 'node:fs';import {join} from 'node:path';import {buildCatalog} from './catalog/build.js';import {digest} from './catalog/protocol.js';import {decodePackage} from './sdk/protocol.js';
+const directory='dist';rmSync(directory,{recursive:true,force:true});mkdirSync(directory);cpSync('store/packages',join(directory,'packages'),{recursive:true});const objects=[];
+for(const id of readdirSync('releases').sort()){
+ const versions=readdirSync(join('releases',id)).filter(n=>n.endsWith('.json')).map(n=>{const release=JSON.parse(readFileSync(join('releases',id,n))),p=release.package,bytes=readFileSync(join('store',p.url));if(bytes.length!==p.size||digest(bytes)!==p.sha256)throw Error('Package integrity '+id);const {manifest,listing}=decodePackage(bytes);if(manifest.id!==id)throw Error('Package identity');return {manifest,listing,package:p};}).sort((a,b)=>{const x=a.manifest.version.split('.').map(Number),y=b.manifest.version.split('.').map(Number);return y[0]-x[0]||y[1]-x[1]||y[2]-x[2];});
+ if(versions.length)objects.push({id,name:versions[0].manifest.name,description:versions[0].listing.subtitle??versions[0].manifest.description,type:'application',versions});
+}
+const root=buildCatalog({directory,kind:'applications',source:{id:'ksf-apps',name:'KSF 公用应用源'},objects});console.log(JSON.stringify({revision:root.revision,count:root.count,indexBytes:readFileSync('dist/index.json').length}));
